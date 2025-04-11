@@ -12,8 +12,7 @@ SRCS		= so_long/main.c \
 			  so_long/game_loop.c \
 			  so_long/player_movement.c \
 			  so_long/graphics.c \
-			  so_long/cleanup.c \
-			  ft_strdup.c
+			  so_long/cleanup.c
 
 # Object files
 OBJS		= $(SRCS:.c=.o)

@@ -1,4 +1,4 @@
-include "so_long.h"
+#include "so_long.h"
 
 int	get_array_size(const char **s)
 {

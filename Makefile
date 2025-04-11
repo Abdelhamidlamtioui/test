@@ -1,61 +1,35 @@
-NAME		= so_long_game
+NAME = so_long
 
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -I.
-RM			= rm -f
+SRC =  ft_check_all.c  libft/ft_memset.c      libft/ft_strjoin.c    printf/ft_putadress.c\
+       ft_check.c      printf/ft_putchar.c     libft/ft_strlcpy.c    printf/ft_putnbr_base.c\
+       ft_error.c      libft/ft_putchar_fd.c  libft/ft_strlen.c     printf/ft_putone.c\
+       ft_flood.c      printf/ft_putstr.c      libft/ft_strnstr.c    printf/ft_unint.c\
+       ft_key.c        libft/ft_putstr_fd.c   libft/ft_substr.c     so_long.c\
+       ft_putimage.c   libft/ft_split.c       printf/ft_countnbr.c\
+       ft_start.c      libft/ft_strcmp.c      printf/ft_nbr.c\
+       ft_tablen.c     libft/ft_strdup.c      printf/ft_printf.c
 
-# Source files
-SRCS		= so_long/main.c \
-			  so_long/map_parsing.c \
-			  so_long/map_validation.c \
-			  so_long/game_init.c \
-			  so_long/game_loop.c \
-			  so_long/player_movement.c \
-			  so_long/graphics.c \
-			  so_long/cleanup.c
 
-# Object files
-OBJS		= $(SRCS:.c=.o)
+OBJ = $(SRC:.c=.o)
 
-# ft_printf
-PRINTF_DIR	= ft_printf
-PRINTF		= $(PRINTF_DIR)/libftprintf.a
+all : $(NAME)
 
-# get_next_line
-GNL_DIR		= get_next_line
-GNL_SRCS	= $(GNL_DIR)/get_next_line.c \
-			  $(GNL_DIR)/get_next_line_utils.c
-GNL_OBJS	= $(GNL_SRCS:.c=.o)
+CFLAGS = -Wall -Wextra -Werror
 
-# MiniLibX
-MLX_FLAGS	= -lmlx -lXext -lX11 -lm
+MLXFLAGS = -L/usr/include/minilibx-linux -lmlx -L/usr/lib -lXext -lX11 -lz
 
-all:		$(NAME)
+%.o : %.c
+	cc $(CFLAGS) -c $< -o $@
 
-# Compile ft_printf
-$(PRINTF):
-	@make -C $(PRINTF_DIR)
+$(NAME) : $(OBJ)
+	cc $(CFLAGS) $(OBJ)  -o $(NAME) $(MLXFLAGS)
 
-# Compile so_long
-$(NAME):	$(OBJS) $(GNL_OBJS) $(PRINTF)
-	@$(CC) $(CFLAGS) $(OBJS) $(GNL_OBJS) $(PRINTF) $(MLX_FLAGS) -o $(NAME)
-	@echo "$(NAME) created"
+clean : 
+	@rm -fv $(OBJ)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+fclean : clean
+	@rm -fv $(NAME)
 
-clean:
-	@$(RM) $(OBJS) $(GNL_OBJS)
-	@make -C $(PRINTF_DIR) clean
-	@echo "Objects cleaned"
+re : fclean all
 
-fclean:		clean
-	@$(RM) $(NAME)
-	@make -C $(PRINTF_DIR) fclean
-	@echo "$(NAME) removed"
-
-re:			fclean all
-
-bonus:		all
-
-.PHONY:		all clean fclean re
+.PHONY : clean re all fclean

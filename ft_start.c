@@ -10,7 +10,7 @@ static int	ft_maplen(char **map)
 	return (i);
 }
 
-void	ft_start(t_data *data)
+void	initialize_game(t_data *data)
 {
 	data->y_init = mlx_init();
 	if (!data->y_init)
@@ -23,11 +23,11 @@ void	ft_start(t_data *data)
 	{
 		ft_free_map(data->map);
 		ft_putstr_fd(WINDOW_ERROR, 2);
-		ft_free_1(data->y_init, NULL, 1);
+		cleanup_and_exit(data->y_init, NULL, 1);
 	}
-	ft_putxpm(data);
-	ft_putimage(data);
-	mlx_hook(data->y_wind, 2, 1L << 0, key_handler, data);
-	mlx_hook(data->y_wind, 17, 0, close_wind, data);
+	load_game_textures(data);
+	render_game_map(data);
+	mlx_hook(data->y_wind, 2, 1L << 0, handle_key_press, data);
+	mlx_hook(data->y_wind, 17, 0, handle_key_press, data);
 	mlx_loop(data->y_init);
 }

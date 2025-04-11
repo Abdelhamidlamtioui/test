@@ -20,106 +20,106 @@ int	ft_collect(char **map)
 	return (0);
 }
 
-void	ft_up(t_data *data, char **map, int *i)
+void	move_player_up(t_data *data, char **map, int *i)
 {
-	int	new_y;
-	int	new_x;
+	int	y;
+	int	x;
 
-	new_y = data->y_player - 1;
-	new_x = data->x_player;
-	if (map[new_y][new_x] == WALLS)
+	y = data->y_player - 1;
+	x = data->x_player;
+	if (map[y][x] == WALLS)
 		return ;
-	if (map[new_y][new_x] == EXIT && !ft_collect(map))
-		ft_escape(data);
+	if (map[y][x] == EXIT && !ft_collect(map))
+		exit_game(data);
 	if (map[data->y_player][data->x_player] == map[data->y_exit][data->x_exit])
 	{
 		map[data->y_player][data->x_player] = EXIT;
-		map[new_y][new_x] = PLAYER;
+		map[y][x] = PLAYER;
 	}
 	else
 	{
 		map[data->y_player][data->x_player] = FREESPACE;
-		map[new_y][new_x] = PLAYER;
+		map[y][x] = PLAYER;
 	}
 	ft_printf("Moves : %d\n", ++(*i));
-	data->y_player = new_y;
-	data->x_player = new_x;
+	data->y_player = y;
+	data->x_player = x;
 }
 
-void	ft_down(t_data *data, char **map, int *i)
+void	move_player_down(t_data *data, char **map, int *i)
 {
-	int	new_y;
-	int	new_x;
+	int	y;
+	int	x;
 
-	new_y = data->y_player + 1;
-	new_x = data->x_player;
-	if (map[new_y][new_x] == WALLS)
+	y = data->y_player + 1;
+	x = data->x_player;
+	if (map[y][x] == WALLS)
 		return ;
-	if (map[new_y][new_x] == EXIT && !ft_collect(map))
-		ft_escape(data);
+	if (map[y][x] == EXIT && !ft_collect(map))
+		exit_game(data);
 	if (map[data->y_player][data->x_player] == map[data->y_exit][data->x_exit])
 	{
 		map[data->y_player][data->x_player] = EXIT;
-		map[new_y][new_x] = PLAYER;
+		map[y][x] = PLAYER;
 	}
 	else
 	{
 		map[data->y_player][data->x_player] = FREESPACE;
-		map[new_y][new_x] = PLAYER;
+		map[y][x] = PLAYER;
 	}
 	ft_printf("Moves : %d\n", ++(*i));
-	data->y_player = new_y;
-	data->x_player = new_x;
+	data->y_player = y;
+	data->x_player = x;
 }
 
-void	ft_left(t_data *data, char **map, int *i)
+void	move_player_left(t_data *data, char **map, int *i)
 {
-	int	new_y;
-	int	new_x;
+	int	y;
+	int	x;
 
-	new_y = data->y_player;
-	new_x = data->x_player - 1;
-	if (map[new_y][new_x] == WALLS)
+	y = data->y_player;
+	x = data->x_player - 1;
+	if (map[y][x] == WALLS)
 		return ;
-	if (map[new_y][new_x] == EXIT && !ft_collect(data->map))
-		ft_escape(data);
+	if (map[y][x] == EXIT && !ft_collect(data->map))
+		exit_game(data);
 	if (map[data->y_player][data->x_player] == map[data->y_exit][data->x_exit])
 	{
 		map[data->y_player][data->x_player] = EXIT;
-		map[new_y][new_x] = PLAYER;
+		map[y][x] = PLAYER;
 	}
 	else
 	{
 		map[data->y_player][data->x_player] = FREESPACE;
-		map[new_y][new_x] = PLAYER;
+		map[y][x] = PLAYER;
 	}
 	ft_printf("Moves : %d\n", ++(*i));
-	data->y_player = new_y;
-	data->x_player = new_x;
+	data->y_player = y;
+	data->x_player = x;
 }
 
-void	ft_right(t_data *data, char **map, int *i)
+void	move_player_right(t_data *data, char **map, int *i)
 {
-	int	new_y;
-	int	new_x;
+	int	y;
+	int	x;
 
-	new_y = data->y_player;
-	new_x = data->x_player + 1;
-	if (map[new_y][new_x] == WALLS)
+	y = data->y_player;
+	x = data->x_player + 1;
+	if (map[y][x] == WALLS)
 		return ;
-	if (map[new_y][new_x] == EXIT && !ft_collect(data->map))
-		ft_escape(data);
+	if (map[y][x] == EXIT && !ft_collect(data->map))
+		exit_game(data);
 	if (map[data->y_player][data->x_player] == map[data->y_exit][data->x_exit])
 	{
 		map[data->y_player][data->x_player] = EXIT;
-		map[new_y][new_x] = PLAYER;
+		map[y][x] = PLAYER;
 	}
 	else
 	{
 		map[data->y_player][data->x_player] = FREESPACE;
-		map[new_y][new_x] = PLAYER;
+		map[y][x] = PLAYER;
 	}
 	ft_printf("Moves : %d\n", ++(*i));
-	data->y_player = new_y;
-	data->x_player = new_x;
+	data->y_player = y;
+	data->x_player = x;
 }

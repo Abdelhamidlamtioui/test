@@ -1,6 +1,6 @@
 include "so_long.h"
 
-int	ft_tablen(const char **s)
+int	get_array_size(const char **s)
 {
 	int	i;
 

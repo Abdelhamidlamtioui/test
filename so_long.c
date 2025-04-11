@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	ft_escape(t_data *data)
+void	exit_game(t_data *data)
 {
 	if (data->y_c)
 		mlx_destroy_image(data->y_init, data->y_c);
@@ -13,10 +13,10 @@ void	ft_escape(t_data *data)
 	if (data->y_s)
 		mlx_destroy_image(data->y_init, data->y_s);
 	ft_free_map(data->map);
-	ft_free_1(data->y_init, data->y_wind, 0);
+	cleanup_and_exit(data->y_init, data->y_wind, 0);
 }
 
-void	ft_free_1(void *y_init, void *y_wind, int status_exit)
+void	cleanup_and_exit(void *y_init, void *y_wind, int status_exit)
 {
 	if (y_wind != NULL)
 		mlx_destroy_window(y_init, y_wind);
@@ -28,32 +28,32 @@ void	ft_free_1(void *y_init, void *y_wind, int status_exit)
 	exit(status_exit);
 }
 
-int	key_handler(int key, void *ptr)
+int	handle_key_press(int key, void *ptr)
 {
 	t_data		*data;
 	static int	i;
 
 	data = (t_data *)ptr;
 	if (key == XK_Escape)
-		ft_escape(data);
+		exit_game(data);
 	if (key == XK_w)
-		ft_up(data, data->map, &i);
+		move_player_up(data, data->map, &i);
 	if (key == XK_s)
-		ft_down(data, data->map, &i);
+		move_player_down(data, data->map, &i);
 	if (key == XK_d)
-		ft_right(data, data->map, &i);
+		move_player_right(data, data->map, &i);
 	if (key == XK_a)
-		ft_left(data, data->map, &i);
-	ft_putimage(data);
+		move_player_left(data, data->map, &i);
+	render_game_map(data);
 	return (0);
 }
 
-int	close_wind(void *ptr)
+int	window_close(void *ptr)
 {
 	t_data	*data;
 
 	data = (t_data *)ptr;
-	ft_escape(data);
+	exit_game(data);
 	return (0);
 }
 
@@ -65,5 +65,5 @@ int	main(int ac, char **av)
 		return (ft_putstr_fd(INPUT_ERROR, 2), 1);
 	ft_memset(&data, 0, sizeof(t_data));
 	ft_check(av[1], &data);
-	ft_start(&data);
+	initialize_game(&data);
 }

@@ -1,6 +1,8 @@
+
+
 #include "so_long.h"
 
-int	ft_check_len(char **str)
+int	map_rectangular(char **str)
 {
 	int		i;
 	size_t	len;
@@ -16,7 +18,7 @@ int	ft_check_len(char **str)
 	return (1);
 }
 
-int	ft_check_walls(char **map, int len)
+int	map_surrounded_walls(char **map, int len)
 {
 	int	i;
 	int	j;
@@ -64,7 +66,7 @@ static void	ft_condtwo(int *p, int *e, t_data *data)
 		data->c_count++;
 }
 
-int	ft_check_comp(t_data *data)
+int	validate_map_components(t_data *data)
 {
 	int	e;
 	int	p;

@@ -54,7 +54,7 @@ static int	flood_is(char **map)
 	return (1);
 }
 
-int	ft_fllod_fill(t_data *data)
+int	flood_fill(t_data *data)
 {
 	char	**str;
 

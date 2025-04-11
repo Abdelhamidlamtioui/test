@@ -1,21 +1,21 @@
 #include "so_long.h"
 
-void	ft_check_all(t_data *data)
+void	validate_map(t_data *data)
 {
 	int	len;
 
-	len = ft_tablen((const char **)data->map);
-	if (!ft_check_len(data->map))
+	len = get_array_size((const char **)data->map);
+	if (!map_rectangular(data->map))
 		ft_error_close(ft_free_map(data->map), SHAPE_ERROR, -1);
-	if (!ft_check_walls(data->map, len))
+	if (!map_surrounded_walls(data->map, len))
 		ft_error_close(ft_free_map(data->map), WALLS_ERROR, -1);
-	if (!ft_check_comp(data))
+	if (!validate_map_components(data))
 		ft_error_close(ft_free_map(data->map), COMPONENET_ERROR, -1);
-	if (!ft_fllod_fill(data))
+	if (!flood_fill(data))
 		ft_error_close(ft_free_map(data->map), MAP_ERROR, -1);
 }
 
-char	*ft_check_content(int fd)
+char	*read_file_content(int fd)
 {
 	char	*tmp;
 	char	*cont;
@@ -43,7 +43,7 @@ char	*ft_check_content(int fd)
 	return (cont);
 }
 
-int	ft_check_filename(char *filename)
+int	validate_file_extension(char *filename)
 {
 	int	i;
 	int	fd;
@@ -65,8 +65,8 @@ void	ft_check(char *filename, t_data *data)
 	char	**map;
 	char	*cont;
 
-	fd = ft_check_filename(filename);
-	cont = ft_check_content(fd);
+	fd = validate_file_extension(filename);
+	cont = read_file_content(fd);
 	if (ft_strnstr(cont, "\n\n", ft_strlen(cont)))
 		ft_error_close(cont, NEWLINE_ERROR, fd);
 	close(fd);
@@ -77,5 +77,5 @@ void	ft_check(char *filename, t_data *data)
 	if (!*map)
 		ft_error_close(ft_free_map(map), READ_ERROR, -1);
 	data->map = map;
-	ft_check_all(data);
+	validate_map(data);
 }

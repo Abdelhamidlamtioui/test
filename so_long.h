@@ -19,20 +19,22 @@
 # endif
 
 # ifndef PACK_ERROR
-#  define INPUT_ERROR "ERROR\n input -> ./so_long <map.ber>\n"
-#  define MALLOC_ERROR "ERROR\n failed in allocation \n"
-#  define READ_ERROR "ERROR\n read nothing \n"
-#  define NEWLINE_ERROR "ERROR\n there is a new line in your map\n"
-#  define FILE_ERROR "ERROR\n invalid map name or wrong extension\n"
-#  define EXTENSION_ERROR "ERROR\n wrong or no extension\n"
-#  define OPEN_ERROR "ERROR\n no such a file or permission denied\n"
-#  define SHAPE_ERROR "ERROR\n the shape of map incoerrect \n"
-#  define WALLS_ERROR "ERROR\n messing walls \n"
-#  define COMPONENET_ERROR "ERROR\n miss or more (P, E, C)\n"
-#  define MAP_ERROR "ERROR\n invalide map \n"
-#  define INIT_ERROR "ERROR\n faild to make connection\n"
-#  define WINDOW_ERROR "ERROR\n faild to creat a window\n"
-#  define IMAGE_ERROR "ERROR\n no such a file or diractory\n"
+/* Program Usage Errors */
+#define FILE_ERROR        "Error: Invalid map filename\n"
+#define EXTENSION_ERROR   "Error: File must have .ber extension\n"
+#define OPEN_ERROR        "Error: Could not open file (file not found or permission denied)\n"
+#define READ_ERROR        "Error: Failed to read map file (empty or read error)\n"
+#define NEWLINE_ERROR     "Error: Map contains empty lines\n"
+#define MALLOC_ERROR      "Error: Memory allocation failed\n"
+#define INPUT_ERROR       "Error: Invalid usage. Correct syntax: ./so_long <map.ber>\n"
+#define SHAPE_ERROR       "Error: Map must be rectangular\n"
+#define WALLS_ERROR       "Error: Map must be surrounded by walls\n"
+#define COMPONENET_ERROR  "Error: Map must contain exactly 1 player (P), 1 exit (E), and at least 1 collectible (C)\n"
+#define MAP_ERROR         "Error: Map is not valid (player cannot reach all collectibles and exit)\n"
+#define INIT_ERROR        "Error: Failed to initialize graphics\n"
+#define WINDOW_ERROR      "Error: Failed to create game window\n"
+#define IMAGE_ERROR       "Error: Failed to load game textures\n"
+
 # endif
 
 # ifndef SIZE_MAP
@@ -66,21 +68,21 @@ void		ft_error_0(char *str);
 void		ft_error_close(char *str, char *mess, int fd);
 void		ft_check(char *filename, t_data *data);
 char		*ft_free_map(char **str);
-int			ft_tablen(const char **s);
-int			ft_check_walls(char **map, int len);
-int			ft_check_comp(t_data *data);
-int			ft_check_len(char **str);
-int			ft_fllod_fill(t_data *data);
-void		ft_up(t_data *data, char **map, int *i);
-void		ft_down(t_data *data, char **map, int *i);
-void		ft_right(t_data *data, char **map, int *i);
-void		ft_left(t_data *data, char **map, int *i);
-void		ft_escape(t_data *data);
-void		ft_start(t_data *data);
-void		ft_putimage(t_data *data);
-void		ft_free_1(void *y_init, void *y_wind, int status_exit);
-int			close_wind(void *ptr);
-int			key_handler(int key, void *ptr);
-void		ft_putxpm(t_data *data);
+int			get_array_size(const char **s);
+int			map_surrounded_walls(char **map, int len);
+int			validate_map_components(t_data *data);
+int			map_rectangular(char **str);
+int			flood_fill(t_data *data);
+void		move_player_up(t_data *data, char **map, int *i);
+void		move_player_down(t_data *data, char **map, int *i);
+void		move_player_right(t_data *data, char **map, int *i);
+void		move_player_left(t_data *data, char **map, int *i);
+void		exit_game(t_data *data);
+void		initialize_game(t_data *data);
+void		render_game_map(t_data *data);
+void		cleanup_and_exit(void *y_init, void *y_wind, int status_exit);
+int			window_close(void *ptr);
+int			handle_key_press(int key, void *ptr);
+void		load_game_textures(t_data *data);
 
 #endif

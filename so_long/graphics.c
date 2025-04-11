@@ -1,5 +1,5 @@
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 /*
  * Put an image to the window at a specified position

@@ -1,19 +1,19 @@
-
-NAME		= so_long
+NAME		= so_long_game
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -I.
 RM			= rm -f
 
 # Source files
-SRCS		= srcs/main.c \
-			  srcs/map_parsing.c \
-			  srcs/map_validation.c \
-			  srcs/game_init.c \
-			  srcs/game_loop.c \
-			  srcs/player_movement.c \
-			  srcs/graphics.c \
-			  srcs/cleanup.c
+SRCS		= so_long/main.c \
+			  so_long/map_parsing.c \
+			  so_long/map_validation.c \
+			  so_long/game_init.c \
+			  so_long/game_loop.c \
+			  so_long/player_movement.c \
+			  so_long/graphics.c \
+			  so_long/cleanup.c \
+			  ft_strdup.c
 
 # Object files
 OBJS		= $(SRCS:.c=.o)
@@ -59,4 +59,4 @@ re:			fclean all
 
 bonus:		all
 
-.PHONY:		all clean fclean re bonus
+.PHONY:		all clean fclean re

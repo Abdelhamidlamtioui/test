@@ -1,5 +1,5 @@
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 /*
  * Free the map memory
@@ -55,4 +55,26 @@ void	cleanup(t_game *game)
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
+}
+
+char	*ft_strdup(const char *s)
+{
+	size_t	len;
+	char	*dup;
+	size_t	i;
+
+	len = 0;
+	while (s[len])
+		len++;
+	dup = (char *)malloc(len + 1);
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }

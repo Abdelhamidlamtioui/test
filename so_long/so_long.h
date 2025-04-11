@@ -19,8 +19,8 @@
 # include <mlx.h>
 
 /* Include your ft_printf and get_next_line */
-# include "../ft_printf/ft_printf.h"
-# include "../get_next_line/get_next_line.h"
+# include "ft_printf/ft_printf.h"
+# include "get_next_line/get_next_line.h"
 
 /* Define keys for movement */
 # define KEY_ESC 53
@@ -61,10 +61,12 @@ typedef struct s_game
 	void	*img_player;
 }	t_game;
 
+/* Function prototypes */
 /* Map parsing and validation */
 int		read_map(t_game *game, char *file_path);
 int		validate_map(t_game *game);
 int		check_map_path(t_game *game);
+char    *ft_strdup(const char *s);
 
 /* Game initialization */
 int		init_game(t_game *game);

@@ -1,5 +1,5 @@
 
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 /*
  * Load images from files
@@ -10,15 +10,15 @@ int	load_images(t_game *game)
 	int	img_height;
 
 	game->img_empty = mlx_xpm_file_to_image(game->mlx, 
-		"./textures/empty.xpm", &img_width, &img_height);
+		"./xpm/empty.xpm", &img_width, &img_height);
 	game->img_wall = mlx_xpm_file_to_image(game->mlx, 
-		"./textures/wall.xpm", &img_width, &img_height);
+		"./xpm/wall.xpm", &img_width, &img_height);
 	game->img_collectible = mlx_xpm_file_to_image(game->mlx, 
-		"./textures/collectible.xpm", &img_width, &img_height);
+		"./xpm/collectible.xpm", &img_width, &img_height);
 	game->img_exit = mlx_xpm_file_to_image(game->mlx, 
-		"./textures/exit.xpm", &img_width, &img_height);
+		"./xpm/exit.xpm", &img_width, &img_height);
 	game->img_player = mlx_xpm_file_to_image(game->mlx, 
-		"./textures/player.xpm", &img_width, &img_height);
+		"./xpm/player.xpm", &img_width, &img_height);
 	if (!game->img_empty || !game->img_wall || !game->img_collectible
 		|| !game->img_exit || !game->img_player)
 		return (0);

@@ -1,5 +1,4 @@
-/
-#include "../includes/so_long.h"
+#include "so_long.h"
 
 /*
  * Check if map is surrounded by walls

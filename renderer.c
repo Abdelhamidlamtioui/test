@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   renderer.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alamtiou <alamtiou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/12 04:33:37 by alamtiou          #+#    #+#             */
+/*   Updated: 2025/04/12 05:02:11 by alamtiou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static void	ft_error(t_data *data)
@@ -22,21 +34,26 @@ void	load_game_textures(t_data *data)
 	int	i;
 	int	j;
 
-	data->y_c = mlx_xpm_file_to_image(data->y_init, "xpm/Collectible.xpm", &i, &j);
+	i = 0;
+	j = 0;
+	data->y_c = mlx_xpm_file_to_image(data->y_init,
+			"textures/collectible.xpm", &i, &j);
 	if (!data->y_c)
 		ft_error(data);
-	data->y_e = mlx_xpm_file_to_image(data->y_init, "xpm/nather_portale.xpm",
-			&i, &j);
+	data->y_e = mlx_xpm_file_to_image(data->y_init,
+			"textures/exit.xpm", &i, &j);
 	if (!data->y_e)
 		ft_error(data);
-	data->y_p = mlx_xpm_file_to_image(data->y_init, "xpm/Player.xpm", &i, &j);
+	data->y_p = mlx_xpm_file_to_image(data->y_init,
+			"textures/player.xpm", &i, &j);
 	if (!data->y_p)
 		ft_error(data);
-	data->y_w = mlx_xpm_file_to_image(data->y_init, "xpm/walls.xpm", &i, &j);
+	data->y_w = mlx_xpm_file_to_image(data->y_init,
+			"textures/walls.xpm", &i, &j);
 	if (!data->y_w)
 		ft_error(data);
-	data->y_s = mlx_xpm_file_to_image(data->y_init, "xpm/freespace.xpm", &i,
-			&j);
+	data->y_s = mlx_xpm_file_to_image(data->y_init,
+			"textures/freespace.xpm", &i, &j);
 	if (!data->y_s)
 		ft_error(data);
 }

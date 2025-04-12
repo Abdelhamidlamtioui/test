@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_start.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alamtiou <alamtiou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/12 04:31:41 by alamtiou          #+#    #+#             */
+/*   Updated: 2025/04/12 05:28:26 by alamtiou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static int	ft_maplen(char **map)
@@ -28,6 +40,6 @@ void	initialize_game(t_data *data)
 	load_game_textures(data);
 	render_game_map(data);
 	mlx_hook(data->y_wind, 2, 1L << 0, handle_key_press, data);
-	mlx_hook(data->y_wind, 17, 0, handle_key_press, data);
+	mlx_hook(data->y_wind, 17, 0, window_close, data);
 	mlx_loop(data->y_init);
 }

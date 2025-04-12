@@ -2,7 +2,7 @@
 static char *fantasy_character[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 8 1",
-"  c None",
+"  c white",
 ". c #2C3E50",
 "X c #493267",
 "o c #5E35B1",

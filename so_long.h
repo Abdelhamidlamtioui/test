@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alamtiou <alamtiou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/12 04:34:11 by alamtiou          #+#    #+#             */
+/*   Updated: 2025/04/12 04:47:08 by alamtiou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -15,25 +27,25 @@
 #  define COLLECT 'C'
 #  define FREESPACE '0'
 #  define EXIT 'E'
-#  define GAME_NAME "I AM LIER"
+#  define GAME_NAME "Mario Ta3 Jumia"
 # endif
 
 # ifndef PACK_ERROR
 /* Program Usage Errors */
-#define FILE_ERROR        "Error: Invalid map filename\n"
-#define EXTENSION_ERROR   "Error: File must have .ber extension\n"
-#define OPEN_ERROR        "Error: Could not open file (file not found or permission denied)\n"
-#define READ_ERROR        "Error: Failed to read map file (empty or read error)\n"
-#define NEWLINE_ERROR     "Error: Map contains empty lines\n"
-#define MALLOC_ERROR      "Error: Memory allocation failed\n"
-#define INPUT_ERROR       "Error: Invalid usage. Correct syntax: ./so_long <map.ber>\n"
-#define SHAPE_ERROR       "Error: Map must be rectangular\n"
-#define WALLS_ERROR       "Error: Map must be surrounded by walls\n"
-#define COMPONENET_ERROR  "Error: Map must contain exactly 1 player (P), 1 exit (E), and at least 1 collectible (C)\n"
-#define MAP_ERROR         "Error: Map is not valid (player cannot reach all collectibles and exit)\n"
-#define INIT_ERROR        "Error: Failed to initialize graphics\n"
-#define WINDOW_ERROR      "Error: Failed to create game window\n"
-#define IMAGE_ERROR       "Error: Failed to load game textures\n"
+#  define FILE_ERROR        "Error: Invalid map filename\n"
+#  define EXTENSION_ERROR   "Error: File must have .ber extension\n"
+#  define OPEN_ERROR        "Error: Could not open file\n"
+#  define READ_ERROR        "Error: Failed to read map file\n"
+#  define NEWLINE_ERROR     "Error: Map contains empty lines\n"
+#  define MALLOC_ERROR      "Error: Memory allocation failed\n"
+#  define INPUT_ERROR       "Error: Correct syntax: ./so_long <map.ber>\n"
+#  define SHAPE_ERROR       "Error: Map must be rectangular\n"
+#  define WALLS_ERROR       "Error: Map must be surrounded by walls\n"
+#  define COMPONENET_ERROR  "Error: Map must contain exactly 1P 1E & mini 1C\n"
+#  define MAP_ERROR         "Error: Map is not valid (P can't reach all C & E)\n"
+#  define INIT_ERROR        "Error: Failed to initialize graphics\n"
+#  define WINDOW_ERROR      "Error: Failed to create game window\n"
+#  define IMAGE_ERROR       "Error: Failed to load game textures\n"
 
 # endif
 
